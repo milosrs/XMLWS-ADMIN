@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row CRUDInterface">
+
+    <div class="row Header">
+      CRUD INTERFACE
+    </div>
+
+    <div class="row Interface">
+      <div class="col-3">
+        <app-list
+          [header]="'Read'"
+          [items]='this.listitems'
+          [selectedRequestType]='requestType'
+          (onElementClickEvent)='elclick($event)'> </app-list>
+      </div>
+      <div class="col-3">
+        <div class="container">
+          <div class="row">
+            Create
+          </div>
+          <div class="col-sm-3">
+            AAA
+          </div>
+          <div class="col-sm-3"> 
+            AAA
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+          <div class="container">
+              <div class="row">
+                Update
+              </div>
+              <div class="col-sm-3">
+                AAA
+              </div>
+              <div class="col-sm-3"> 
+                AAA
+              </div>
+            </div>
+      </div>
+      <div class="col-3">
+          <div class="container">
+              <div class="row">
+                Delete
+              </div>
+              <div class="col-sm-3">
+                AAA
+              </div>
+              <div class="col-sm-3"> 
+                AAA
+              </div>
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>
