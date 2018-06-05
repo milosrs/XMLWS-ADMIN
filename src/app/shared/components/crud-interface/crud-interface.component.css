@@ -2,8 +2,8 @@
     display: relative;
     background: lightskyblue;
     text-align: center;
-    width: 90%;
-    height: 250px;
+    width: 100%;
+    height: auto;
     margin: auto;
     border-radius: 12px;
 }
@@ -27,11 +27,53 @@
 .Interface {
     position: relative;
     background: white;
-    width: 80%;
-    top: 20%;
-    right: 13.4%;
     border-color: black;
-    border-width: 5px;
+    border-width: 3px;
     border-style: outset;
-    height: 70%;
+    height: auto;
+    width: 60%;
+    margin-top: 2%;         /*These are col-6 attributes*/
+    margin-left: 20%;
+    margin-bottom: 2%;
+}
+
+.TinyInterfaceHeader {
+    border-radius: 25px;
+    display: inline-block;
+    position: relative;
+    background: orange;
+    color: brown;
+    font-family: fantasy;
+    text-align: center;
+    width: 50%;
+    left: 8.8%;
+}
+
+.OperationWrapper {
+    padding-bottom: 3%;
+}
+
+.TinyInterfaceButtonGroup {
+    background: aquamarine;
+    margin-top: 20%;
+}
+
+.TIButton {
+    padding: inherit;
+}
+
+.ScrollableForm {
+    overflow: scroll;
+    max-height: 150px;
+    font-size: 1vw;
+    word-break: break-all;
+    border-style: solid;
+    border-color: black;
+    /*font-size: 1vw;
+    Scaling down the items*/
+    transform: scale(0.9, 0.9);
+    -ms-transform: scale(0.8, 0.8); /* IE 9 */
+    -webkit-transform: scale(0.9, 0.9); /* Safari and Chrome */
+    -o-transform: scale(0.8, 0.8); /* Opera */
+    -moz-transform: scale(0.8, 0.8); /* Firefox */
 }

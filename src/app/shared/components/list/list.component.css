@@ -1,6 +1,5 @@
 .ListWrapper {
   width: auto;
-  max-height: 300px;
   border-style: solid;
   border-color: cadetblue;
   overflow-y: scroll;
@@ -44,6 +43,16 @@
 }
 
 .Text {
-  width: 70%;
-  height: 90%;
+  /*font-size: 1vw;
+  right: 12%;*/
+  margin-top: 10%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.Image {
+  /*right: 20%;
+  To make this list more reactive, make a list.ts function using the commented values also*/
+  width:  40px;
+  height: 40px;
 }

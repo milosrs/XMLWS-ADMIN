@@ -3,14 +3,14 @@
     {{header}}
   </div>
 
-  <div class="ListWrapper" *ngIf="type == null || type == listType.COMMON" id="Common">
+  <div class="ListWrapper" [ngStyle]="this.dynamicStyle" *ngIf="type == null || type == listType.COMMON" id="Common">
     <ul class="list-group">
       <li class="list-group-item ListItem" *ngFor="let item of items; let i = index" (click)="elementClicked(item)"
           id={{i}}>
             <div class="row">
-              <div class="col-sm-3">
-                  <img *ngIf="item.imagePath != null && item.imagePath !== undefined" 
-                  src="{{item.imagePath}}" width="5px" height="5px"/>
+              <div class="col-sm-3 Image">
+                  <img *ngIf="item.imagePath != null && item.imagePath !== undefined" class="Image"
+                    src="{{item.imagePath}}"/>
               </div>
               <div class="col-sm-3 Text">
                   {{item.text}}
@@ -20,7 +20,7 @@
     </ul>
   </div>
 
-  <div class="ListWrapper" *ngIf="type === listType.REQUEST_LIST" id="Request">
+  <div class="ListWrapper" [ngStyle]="this.dynamicStyle" *ngIf="type === listType.REQUEST_LIST" id="Request">
     <ul class="list-group">
       <li class="list-group-item RequestItem" *ngFor="let item of items; let i = index"
           id="{{'RequestW'+i}}">

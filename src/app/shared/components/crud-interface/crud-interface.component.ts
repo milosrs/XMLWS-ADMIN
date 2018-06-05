@@ -12,6 +12,7 @@ export class CrudInterfaceComponent implements OnInit {
 
   @Input() public headerMessage: string;
   private listitems;
+  private entityName;
 
   constructor(private service: AbstractService) { }
 
@@ -21,5 +22,11 @@ export class CrudInterfaceComponent implements OnInit {
 
   elclick(item) {
     alert(item.text);
+  }
+
+  getListStyle() {
+    return {
+      "max-height" : "154px"
+    };
   }
 }

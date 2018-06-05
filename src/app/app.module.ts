@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { CrudInterfaceComponent } from './shared/components/crud-interface/crud-interface.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -16,6 +17,7 @@ import { UserManipulatorService } from './services/user-manipulator.service';
 import { ListComponent } from './shared/components/list/list.component';
 import { RequestComponent } from './shared/components/request/request.component';
 import { SearchComponent } from './shared/components/search/search.component';
+import { DoesthisworkComponent } from './doesthiswork/doesthiswork.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { SearchComponent } from './shared/components/search/search.component';
     LoginComponent,
     ListComponent,
     RequestComponent,
-    SearchComponent
+    SearchComponent,
+    DoesthisworkComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [
      AbstractService,

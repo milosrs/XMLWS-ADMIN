@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, ViewChildren, QueryList} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, ViewChildren, QueryList, NgModule} from '@angular/core';
 import {HelperFunctions} from '../../util/helper-functions';
 import {Constants} from '../../constants/constants';
 import {ListItem} from '../../model/list-item';
@@ -18,16 +18,15 @@ export class ListComponent implements OnInit {
   @Input() public items: any;
   @Input() public type: string;
   @Input() public selectedRequestType: string;
+  @Input() public dynamicStyle: string;
   @Output() acceptClickEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() declineClickEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() addRemoveClickEvent: EventEmitter<any> = new EventEmitter<any>();
   @ViewChildren(RequestComponent) reqComps: QueryList<RequestComponent>;
 
-  constructor() {
-    console.log(this.items);
-  }
+  constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {console.log(this.dynamicStyle); }
 
   elementClicked(item) {
     this.onElementClickEvent.emit(item);
