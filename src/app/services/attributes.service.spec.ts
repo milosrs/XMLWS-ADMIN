@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { PublisherService } from './publisher.service';
+import { AttributesService} from './attributes.service';
 
 describe('PublisherService', () => {
   beforeEach(() => {

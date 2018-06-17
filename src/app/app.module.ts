@@ -12,12 +12,13 @@ import { HomeComponent } from './components/home/home.component';
 import { AbstractService } from './services/abstract.service';
 import { AgentService } from './services/agent.service';
 import { LoginService } from './services/login.service';
-import { PublisherService } from './services/publisher.service';
+import { AttributesService } from './services/attributes.service';
 import { UserManipulatorService } from './services/user-manipulator.service';
 import { ListComponent } from './shared/components/list/list.component';
 import { RequestComponent } from './shared/components/request/request.component';
 import { SearchComponent } from './shared/components/search/search.component';
 import { DoesthisworkComponent } from './doesthiswork/doesthiswork.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DoesthisworkComponent } from './doesthiswork/doesthiswork.component';
     ListComponent,
     RequestComponent,
     SearchComponent,
-    DoesthisworkComponent
+    DoesthisworkComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { DoesthisworkComponent } from './doesthiswork/doesthiswork.component';
      AbstractService,
      AgentService,
      LoginService,
-     PublisherService,
+     AttributesService,
      UserManipulatorService
   ],
   bootstrap: [AppComponent]

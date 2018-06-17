@@ -1,0 +1,1 @@
+export * from './src/app/shared/components/crud-interface/crud-interface.component';
