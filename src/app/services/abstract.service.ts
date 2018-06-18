@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export abstract class AbstractService<Entity, Key> {
 
-  actionUrl = 'http://localhost:8081/';
+  actionUrl = 'http://localhost:8081/ftn-booking.com/';
 
   constructor(protected http: HttpClient, protected url: string, protected authService: AuthService) {
     this.actionUrl = this.actionUrl + url;

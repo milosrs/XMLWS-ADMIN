@@ -15,7 +15,7 @@ export class LoggedInGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       const shouldRedirect =  this.auth.isLoggedInSimple();
 
-      if(shouldRedirect) {
+      if(!shouldRedirect) {
         this.router.navigate(['/login'], {queryParams: {returnState: state.url}});
       }
 

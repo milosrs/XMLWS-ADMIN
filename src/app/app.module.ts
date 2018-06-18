@@ -19,9 +19,12 @@ import { UserManipulatorService } from './services/user-manipulator.service';
 import { ListComponent } from './shared/components/list/list.component';
 import { RequestComponent } from './shared/components/request/request.component';
 import { SearchComponent } from './shared/components/search/search.component';
-import { DoesthisworkComponent } from './doesthiswork/doesthiswork.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoggedInGuard } from './app-routing/route-guards/logged-in.guard';
+import { UserpanelComponent } from './components/userpanel/userpanel.component';
+import { AgentpanelComponent } from './components/agentpanel/agentpanel.component';
+import { AttributepanelComponent } from './components/attributepanel/attributepanel.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +36,11 @@ import { LoggedInGuard } from './app-routing/route-guards/logged-in.guard';
     ListComponent,
     RequestComponent,
     SearchComponent,
-    DoesthisworkComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserpanelComponent,
+    AgentpanelComponent,
+    AttributepanelComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

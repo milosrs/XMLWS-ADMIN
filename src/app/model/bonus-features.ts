@@ -1,2 +1,4 @@
-export class BonusFeatures {
+import { Attribute } from "./attribute";
+
+export class BonusFeatures extends Attribute {
 }

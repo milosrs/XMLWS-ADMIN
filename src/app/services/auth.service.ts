@@ -17,7 +17,7 @@ export class AuthService {
   private readonly emptyToken = '{}';
   loggedUserToken: Token;
   headers = new HttpHeaders({'Content-Type': 'application/json' });
-  appUrl = 'http://localhost:8081/';
+  appUrl = 'http://localhost:8081/ftn-booking.com/rest';
 
   constructor(protected http: HttpClient, protected router: Router) {
     this.loggedUserToken = new Token('', '');
@@ -29,11 +29,11 @@ export class AuthService {
     if (!HelperFunctions.isEmptyValue(item)) {
       if (!HelperFunctions.containsEmptyValues(item) && item === this.emptyToken) {
         const ls = JSON.parse(window.localStorage.getItem('currentUser'));
-        this.loggedUserToken = new Token(ls['username'], ls['realm'], ls['token']);
+        this.loggedUserToken = new Token(ls['username'], ls['token']);
       }
       if(HelperFunctions.containsEmptyValues(this.loggedUserToken)) {
         const ls = JSON.parse(window.localStorage.getItem('currentUser'));
-        this.loggedUserToken = new Token(ls['username'], ls['realm'], ls['token']);
+        this.loggedUserToken = new Token(ls['username'], ls['token']);
       }
     }
   }
@@ -43,9 +43,10 @@ export class AuthService {
   }
 
   login(loginInfo: AuthenticationRequest, returnUrl: string) {
-    return this.http.post<Token>(this.appUrl + 'auth/login', loginInfo)
+    return this.http.post<Token>(this.appUrl + '/adminLogin', loginInfo)
       .subscribe(ret => {
-        this.loggedUserToken =  new Token(loginInfo.username, ret['realm'], ret['token']);
+        const resp = ret['responseBody'];
+        this.loggedUserToken =  new Token(resp['username'], resp['token']);
         this.storeToken();
         this.logger.next(true);
         console.log('Token:', this.loggedUserToken);
@@ -94,7 +95,7 @@ export class AuthService {
       token = this.loggedUserToken;
     } else if (!HelperFunctions.containsEmptyValues(storage) && storage !== emptyToken) {
       const ls = JSON.parse(window.localStorage.getItem('currentUser'));
-      this.loggedUserToken = new Token(ls['username'], ls['realm'], ls['token']);
+      this.loggedUserToken = new Token(ls['username'], ls['token']);
       this.storeToken();
       token = this.loggedUserToken;
     }
@@ -103,11 +104,17 @@ export class AuthService {
   }
 
   isLoggedIn(): Observable<boolean> {
-    debugger;
     return this.logger.asObservable();
   }
 
   isLoggedInSimple(): boolean {
-    return this.getToken() !== null;
+    const ls = JSON.parse(window.localStorage.getItem('currentUser'));
+    const loggedIn = !HelperFunctions.containsEmptyValues(this.getToken()) || !HelperFunctions.isEmptyValue(ls);
+
+    if(loggedIn) {
+      this.storeToken();
+    }
+
+    return loggedIn;
   }
 }

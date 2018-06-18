@@ -4,6 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../components/login/login.component';
 import { HomeComponent } from '../components/home/home.component';
 import { LoggedInGuard } from './route-guards/logged-in.guard';
+import { CommentsComponent } from '../components/comments/comments.component';
+import { AgentpanelComponent } from '../components/agentpanel/agentpanel.component';
+import { AttributepanelComponent } from '../components/attributepanel/attributepanel.component';
+import { UserpanelComponent } from '../components/userpanel/userpanel.component';
 
 const routes: Routes = [
   {
@@ -15,6 +19,26 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [LoggedInGuard]
   },
+  {
+    path: 'users',
+    component: UserpanelComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: 'attributes',
+    component: AttributepanelComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: 'comments',
+    component: CommentsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: 'agents',
+    component: AgentpanelComponent,
+    canActivate: [LoggedInGuard]
+  }
 ];
 
 @NgModule({

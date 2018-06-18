@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DoesthisworkComponent } from './doesthiswork.component';
+import { UserpanelComponent } from './userpanel.component';
 
-describe('DoesthisworkComponent', () => {
-  let component: DoesthisworkComponent;
-  let fixture: ComponentFixture<DoesthisworkComponent>;
+describe('UserpanelComponent', () => {
+  let component: UserpanelComponent;
+  let fixture: ComponentFixture<UserpanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DoesthisworkComponent ]
+      declarations: [ UserpanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DoesthisworkComponent);
+    fixture = TestBed.createComponent(UserpanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
