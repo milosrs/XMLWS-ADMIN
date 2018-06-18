@@ -14,7 +14,6 @@ import { HomeComponent } from './components/home/home.component';
 
 import { AbstractService } from './services/abstract.service';
 import { AgentService } from './services/agent.service';
-import { LoginService } from './services/login.service';
 import { AttributesService } from './services/attributes.service';
 import { UserManipulatorService } from './services/user-manipulator.service';
 import { ListComponent } from './shared/components/list/list.component';
@@ -22,6 +21,7 @@ import { RequestComponent } from './shared/components/request/request.component'
 import { SearchComponent } from './shared/components/search/search.component';
 import { DoesthisworkComponent } from './doesthiswork/doesthiswork.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoggedInGuard } from './app-routing/route-guards/logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -39,14 +39,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
-     AbstractService,
      AgentService,
-     LoginService,
      AttributesService,
-     UserManipulatorService
+     UserManipulatorService,
+     LoggedInGuard
   ],
   bootstrap: [AppComponent]
 })

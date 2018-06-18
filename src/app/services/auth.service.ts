@@ -42,14 +42,14 @@ export class AuthService {
     window.localStorage.setItem('currentUser', JSON.stringify(this.loggedUserToken));
   }
 
-  login(loginInfo: AuthenticationRequest) {
+  login(loginInfo: AuthenticationRequest, returnUrl: string) {
     return this.http.post<Token>(this.appUrl + 'auth/login', loginInfo)
       .subscribe(ret => {
         this.loggedUserToken =  new Token(loginInfo.username, ret['realm'], ret['token']);
         this.storeToken();
         this.logger.next(true);
         console.log('Token:', this.loggedUserToken);
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl(returnUrl);
       });
   }
 
@@ -103,6 +103,7 @@ export class AuthService {
   }
 
   isLoggedIn(): Observable<boolean> {
+    debugger;
     return this.logger.asObservable();
   }
 

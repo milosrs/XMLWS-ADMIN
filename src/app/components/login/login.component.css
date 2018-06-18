@@ -1,8 +1,10 @@
 .loginForm {
-  width: 50%;
-  align-items: center;
-  align-self: center;
   padding-top: 10px;
+}
+
+.Error {
+  position:relative;
+  font-size: 15px;
 }
 
 .ng-valid[required], .ng-valid.required  {

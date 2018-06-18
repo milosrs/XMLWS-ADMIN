@@ -1,9 +1,11 @@
 import { Component, OnInit, NgModule, EventEmitter, Input, Output } from '@angular/core';
 import { HelperFunctions } from '../../shared/util/helper-functions';
 import { Message } from '../../shared/model/message';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { HomeComponent } from '../home/home.component';
+import { AuthService } from '../../services/auth.service';
+import { AuthenticationRequest } from '../../model/authentication-request';
 
 @Component({
   selector: 'app-login',
@@ -17,17 +19,16 @@ export class LoginComponent  implements OnInit {
     uname: '',
     password: ''
   };
+  private returnUrl: string;
 
-  constructor(private router : Router) {
+  constructor(private auth: AuthService, 
+              private router : Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-
-  /*public btnClick(): void {
-    const msg = new Message('foo', 'bar');
-    this.sendMessage(msg);
-  }*/
 
   clearAllInfo() {
     this.logInfo.uname = '';
@@ -36,8 +37,8 @@ export class LoginComponent  implements OnInit {
 
   tryLogin() {
     if (!HelperFunctions.containsEmptyValues(this.logInfo)) {
-      this.errorMessage = null;
-      const msg = new Message('login', JSON.stringify(this.logInfo), null);
+      const authRequest = new AuthenticationRequest(this.logInfo.uname, this.logInfo.password);
+      this.auth.login(authRequest, this.returnUrl);
     }
   }
 

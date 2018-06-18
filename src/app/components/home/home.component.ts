@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'home',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private selectedRoute: string;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
 
+  select(route:string) {
+    if(this.selectedRoute === route) {
+      this.selectedRoute = '';
+    } else {
+      this.selectedRoute = route;
+    }
+  }
 }

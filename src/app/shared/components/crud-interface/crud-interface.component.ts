@@ -14,7 +14,7 @@ export class CrudInterfaceComponent implements OnInit {
   private listitems;
   private entityName;
 
-  constructor(private service: AbstractService) { }
+  constructor() { }
 
   ngOnInit() {
     this.listitems = HelperFunctions.createDummyTest(undefined);

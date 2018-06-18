@@ -1,0 +1,40 @@
+.ClickableCommand{
+    cursor: pointer;
+    background-color: lightseagreen;
+    color: linen;
+    border-style: ridge;
+    border-color: slategrey;
+    border-width: 5px;
+    border-radius: 10%;
+    font-size: 1.25em;
+    text-align: center;
+    width: 110px;
+}
+
+.ClickableCommand:hover {
+    cursor: pointer;
+    background-color: darkblue;
+    color: wheat;
+    border-style: ridge;
+    border-color: slategrey;
+    border-width: 5px;
+    border-radius: 10%;
+    font-size: 1.25em;
+    text-align: center;
+    width: 110px;
+}
+
+.CommandArea {
+    margin: 15% 10% 10% 10%;
+}
+
+.CommandButtonsArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Header {
+    justify-content: center;
+}
