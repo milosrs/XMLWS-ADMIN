@@ -2,11 +2,11 @@
   <div class="row CRUDInterface">
 
     <div class="row Header">
-      CRUD INTERFACE
+      {{header}}
     </div>
 
     <div class="row Interface">
-      <div class="col-6">
+      <div class="col-6" *ngIf="CRUD.indexOf('R') > -1">
         <app-list
           [header]="'Read'"
           [items]='this.listitems'
@@ -14,7 +14,7 @@
           (onElementClickEvent)='elclick($event)'
           [dynamicStyle]= "getListStyle()"> </app-list>
       </div>
-      <div class="col-6 OperationWrapper">
+      <div class="col-6 OperationWrapper" *ngIf="CRUD.indexOf('C') > -1">
         <div class="row TinyInterfaceHeader">
           Create
         </div>
@@ -37,7 +37,7 @@
           </div>
         </div>
       </div>
-      <div class="col-6 OperationWrapper">
+      <div class="col-6 OperationWrapper" *ngIf="CRUD.indexOf('U') > -1">
         <div class="row TinyInterfaceHeader">
           Update
         </div>
@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-      <div class="col-6 OperationWrapper">
+      <div class="col-6 OperationWrapper" *ngIf="CRUD.indexOf('D') > -1">
           <app-list
             [header]="'Delete'"
             [items]='this.listitems'

@@ -1,0 +1,64 @@
+.ClickableCommand{
+    cursor: pointer;
+    background-color: lightseagreen;
+    color: linen;
+    border-style: ridge;
+    border-color: slategrey;
+    border-width: 5px;
+    border-radius: 10%;
+    font-size: 1.25em;
+    text-align: center;
+    min-width: 110px;
+    max-width: 170px;
+}
+
+.ClickableCommand:hover {
+    cursor: pointer;
+    background-color: darkblue;
+    color: wheat;
+    border-style: ridge;
+    border-color: slategrey;
+    border-width: 5px;
+    border-radius: 10%;
+    font-size: 1.25em;
+    text-align: center;
+    min-width: 110px;
+    max-width: 170px;
+}
+
+.Active {
+    cursor: pointer;
+    background-color: steelblue;
+    color: snow;
+    border-style: ridge;
+    border-color: slategrey;
+    border-width: 5px;
+    border-radius: 10%;
+    font-size: 1.25em;
+    text-align: center;
+    min-width: 110px;
+    max-width: 170px;
+}
+
+.CommandArea {
+    margin: 0% 0% 0% 10%;
+}
+
+.CommandButtonsArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Header {
+    justify-content: center;
+}
+
+.Interface {
+    margin-right: 2%;
+    position: absolute;
+    margin-top: 5%;
+    margin-left: -24%;
+    width: 96%;
+}

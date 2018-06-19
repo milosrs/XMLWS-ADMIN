@@ -4,13 +4,15 @@ import { ListComponent } from '../list/list.component';
 import { HelperFunctions } from '../../util/helper-functions';
 
 @Component({
-  selector: 'app-crud-interface',
+  selector: 'CRUD',
   templateUrl: './crud-interface.component.html',
   styleUrls: ['./crud-interface.component.css']
 })
 export class CrudInterfaceComponent implements OnInit {
 
-  @Input() public headerMessage: string;
+  @Input() public header: string;
+  @Input() public CRUD: string;
+  private createdItems: string;
   private listitems;
   private entityName;
 

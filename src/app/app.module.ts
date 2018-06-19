@@ -14,8 +14,11 @@ import { HomeComponent } from './components/home/home.component';
 
 import { AbstractService } from './services/abstract.service';
 import { AgentService } from './services/agent.service';
-import { AttributesService } from './services/attributes.service';
 import { UserManipulatorService } from './services/user-manipulator.service';
+import { AccomodationCategoryService } from './services/accomodation-category.service';
+import { AccomodationTypeService } from './services/accomodation-type.service';
+import { BonusFeaturesService } from './services/bonus-features.service';
+
 import { ListComponent } from './shared/components/list/list.component';
 import { RequestComponent } from './shared/components/request/request.component';
 import { SearchComponent } from './shared/components/search/search.component';
@@ -51,9 +54,11 @@ import { CommentsComponent } from './components/comments/comments.component';
   ],
   providers: [
      AgentService,
-     AttributesService,
      UserManipulatorService,
-     LoggedInGuard
+     LoggedInGuard,
+     AccomodationCategoryService,
+     AccomodationTypeService,
+     BonusFeaturesService
   ],
   bootstrap: [AppComponent]
 })

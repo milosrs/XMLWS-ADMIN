@@ -1,3 +1,49 @@
-<p>
-  attributepanel works!
-</p>
+<div class="container-fluid CommandArea"> 
+    <div class="row Header">
+      <h1>Attributes control panel</h1>
+    </div>
+    <div class="row CommandButtonsArea" *ngIf="attributeType === null || attributeType === undefined">
+      <div (click)="select('Category')" [ngClass]="{Active: attributeType === 'Category', ClickableCommand: attribute != 'Category'}">
+        Accomodation Categories
+      </div>
+      <div (click)="select('Type')" [ngClass]="{Active: attributeType === 'Type',  ClickableCommand: attribute != 'Type'}">
+        Accomodation Types
+      </div>
+      <div (click)="select('Bonus')" [ngClass]="{Active: attributeType === 'Bonus',  ClickableCommand: attribute != 'Bonus'}">
+        Bonus Features
+      </div>
+    </div>
+
+    <div class="row" *ngIf="attributeType === 'Category' && shouldShowPanel">
+      <div class="row">
+        <button class="btn btn-primary" (click)="backToSelection()">Back</button>
+      </div>
+      <div class="row Interface">
+          <CRUD
+            [header]="'Accomodation Category Work Panel'"
+            [CRUD]="'CUD'"></CRUD>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="attributeType === 'Type' && shouldShowPanel">
+        <div class="row">
+            <button class="btn btn-primary" (click)="backToSelection()">Back</button>
+          </div>
+          <div class="row Interface">
+              <CRUD
+              [header]="'Accomodation Type Work Panel'"
+              [CRUD]="'CUD'"></CRUD>
+          </div>  
+    </div>
+
+    <div class="row" *ngIf="attributeType === 'Bonus' && shouldShowPanel">
+        <div class="row">
+            <button class="btn btn-primary" (click)="backToSelection()">Back</button>
+          </div>
+          <div class="row Interface">
+              <CRUD
+                [header]="'Bonus Features Work Panel'"
+                [CRUD]="'CUD'"></CRUD>
+          </div>    
+    </div>
+  </div>
