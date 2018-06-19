@@ -26,10 +26,14 @@ export class ListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {console.log(this.dynamicStyle); }
+  ngOnInit() { }
 
-  elementClicked(item) {
-    this.onElementClickEvent.emit(item);
+  elementClicked(item: ListItem) {
+    if(!HelperFunctions.containsEmptyValues(item.relatedItem)){
+      this.onElementClickEvent.emit(item.relatedItem);
+    } else {
+      this.onElementClickEvent.emit(item);
+    }
   }
 
   accept(object) {

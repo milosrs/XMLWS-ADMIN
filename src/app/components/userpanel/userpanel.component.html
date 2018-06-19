@@ -1,3 +1,34 @@
-<p>
-  userpanel works!
-</p>
+<div class="container">
+
+  <h1>Manage Registered Users</h1>
+
+  <div class="row">
+    &nbsp;
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <app-list
+        [header]="'Active'"
+        [type]="listType"
+        [items]="convertToListItem(activeUserList)"
+        (onElementClickEvent)="onActiveClick($event)"></app-list>
+    </div>
+
+    <div class="col-4">
+        <app-list
+          [header]="'Inactive'"
+          [type]="listType"
+          [items]="convertToListItem(inactiveUserList)"
+          (onElementClickEvent)="onDisabledClick($event)"></app-list>
+    </div>
+
+    <div class="col-4">
+        <app-list
+          [header]="'Delete'"
+          [type]="listType"
+          [items]="convertToListItem(allUsersList)"
+          (onElementClickEvent)="onDeleteUserClick($event)"></app-list>
+    </div>
+  </div>
+</div>

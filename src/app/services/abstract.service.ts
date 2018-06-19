@@ -37,8 +37,7 @@ export abstract class AbstractService<Entity, Key> {
   }
 
   delete(toDelete: Key): Observable<any> {
-    return this.http.delete(this.actionUrl + '/delete/' + toDelete, { headers: this.authService.getJSONAuthHeader(),
-      observe: 'response', responseType: 'text' });
+    return this.http.delete(this.actionUrl + '/delete/' + toDelete, { headers: this.authService.getJSONAuthHeader()});
   }
 
   update(toUpdate: any): Observable<any> {

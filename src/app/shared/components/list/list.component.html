@@ -8,7 +8,7 @@
       <li class="list-group-item ListItem" *ngFor="let item of items; let i = index" (click)="elementClicked(item)"
           id={{i}}>
             <div class="row">
-              <div class="col-sm-3 Image">
+              <div class="col-sm-3 Image" *ngIf="item.imagePath != null && item.imagePath !== undefined">
                   <img *ngIf="item.imagePath != null && item.imagePath !== undefined" class="Image"
                     src="{{item.imagePath}}"/>
               </div>
