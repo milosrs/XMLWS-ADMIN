@@ -73,7 +73,7 @@ export class AttributepanelComponent implements OnInit {
 
   create(item: CrudInterfaceObject) {
     if(this.attributeType === 'Category') {
-      const category = new AccomodationCategory(null, item.objToSend['name']);
+      const category = new AccomodationCategory(null, item.objToSend['name'], item.objToSend['strength']);
       this.categoryService.insert(category)
       .subscribe(resp => {
         this.crudInterface.addToArray(resp['responseBody']);
@@ -95,7 +95,7 @@ export class AttributepanelComponent implements OnInit {
 
   update(item: CrudInterfaceObject) {
     if(this.attributeType === 'Category') {
-      const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name']);
+      const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name'], item.objToSend['strength']);
       this.categoryService.update(category)
       .subscribe(resp => {
         this.crudInterface.updateFromArray(resp['responseBody'], 'id');
@@ -117,7 +117,7 @@ export class AttributepanelComponent implements OnInit {
 
   delete(item: CrudInterfaceObject) {
     if(this.attributeType === 'Category') {
-      const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name']);
+      const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name'], item.objToSend['strength']);
       this.categoryService.delete(category.id)
       .subscribe(resp => {
         this.crudInterface.deleteFromArray('id', item.realObject['id']);
