@@ -14,7 +14,10 @@ import { AbstractService } from './abstract.service';
 export class AuthService {
 
   private logger = new Subject<boolean>();
-  private readonly emptyToken = '{}';
+  private readonly emptyToken = {
+                                  username : "",
+                                  token : ""
+                                };
   loggedUserToken: Token;
   headers = new HttpHeaders({'Content-Type': 'application/json' });
   appUrl = 'http://localhost:8081/ftn-booking.com/rest';
@@ -27,7 +30,7 @@ export class AuthService {
     const item = window.localStorage.getItem('currentUser');
 
     if (!HelperFunctions.isEmptyValue(item)) {
-      if (!HelperFunctions.containsEmptyValues(item) && item === this.emptyToken) {
+      if (!HelperFunctions.containsEmptyValues(item) && JSON.stringify(item) === JSON.stringify(this.emptyToken)) {
         const ls = JSON.parse(window.localStorage.getItem('currentUser'));
         this.loggedUserToken = new Token(ls['username'], ls['token']);
       }
@@ -109,8 +112,12 @@ export class AuthService {
 
   isLoggedInSimple(): boolean {
     const ls = JSON.parse(window.localStorage.getItem('currentUser'));
-    const loggedIn = !HelperFunctions.containsEmptyValues(this.getToken()) || !HelperFunctions.isEmptyValue(ls);
-
+    const loggedIn = !HelperFunctions.containsEmptyValues(this.getToken()) || 
+                     !HelperFunctions.isEmptyValue(ls) &&
+                     this.emptyToken !== this.loggedUserToken &&
+                     JSON.stringify(this.emptyToken) !== window.localStorage.getItem('currentUser') &&
+                     JSON.stringify(ls) != JSON.stringify(this.emptyToken);
+    
     if(loggedIn) {
       this.storeToken();
     }
