@@ -24,7 +24,10 @@
             [CRUD]="'CUD'"
             [items]="attributesList"
             [displayNames]="['name']"
-            [keysToEdit]="['name']"></CRUD>
+            [keysToEdit]="['name']"
+            (onCreateClickEvent)="create($event)"
+            (onUpdateClickEvent)="update($event)"
+            (onDeleteClickEvent)="delete($event)"></CRUD>
       </div>
     </div>
 
@@ -34,11 +37,14 @@
           </div>
           <div class="row Interface">
               <CRUD
-              [header]="'Accomodation Type'"
-              [CRUD]="'CUD'"
-              [items]="attributesList"
-              [displayNames]="['name']"
-              [keysToEdit]="['name']"></CRUD>
+                [header]="'Accomodation Type'"
+                [CRUD]="'CUD'"
+                [items]="attributesList"
+                [displayNames]="['name']"
+                [keysToEdit]="['name']"
+                (onCreateClickEvent)="create($event)"
+                (onUpdateClickEvent)="update($event)"
+                (onDeleteClickEvent)="delete($event)"></CRUD>
           </div>  
     </div>
 
@@ -53,7 +59,9 @@
                 [items]="attributesList"
                 [displayNames]="['name']"
                 [keysToEdit]="['name']"
-                (onCreateClickEvent)="create($event)"></CRUD>
+                (onCreateClickEvent)="create($event)"
+                (onUpdateClickEvent)="update($event)"
+                (onDeleteClickEvent)="delete($event)"></CRUD>
           </div>    
     </div>
   </div>

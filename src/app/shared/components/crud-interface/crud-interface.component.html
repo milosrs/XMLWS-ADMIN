@@ -84,7 +84,7 @@
               <div class="form-group row" *ngFor="let key of keyList">
                 <label for="key" class="col-sm-5 col-form-label">{{key}}</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" id="key" name="key" 
+                    <input type="text" class="form-control" id="{{key}}" name="{{key}}" 
                           [(ngModel)]="objectToSend[key]" *ngIf="getObjectKeyType(key) === 'string'"/>
                 </div>
               </div>

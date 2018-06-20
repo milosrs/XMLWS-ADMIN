@@ -3,6 +3,7 @@ import { AbstractService } from '../../../services/abstract.service';
 import { ListComponent } from '../list/list.component';
 import { HelperFunctions } from '../../util/helper-functions';
 import $ from 'jquery'
+import { CrudInterfaceObject } from '../../model/crudInterfaceObject';
 declare var $: $
 
 @Component({
@@ -22,6 +23,7 @@ export class CrudInterfaceComponent implements OnInit {
   @Output() public onUpdateClickEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() public onDeleteClickEvent: EventEmitter<any> = new EventEmitter<any>(); 
   
+  private activeItem: any;
   private createdItems: any[];
   private listitems;
   private entityName;
@@ -51,7 +53,8 @@ export class CrudInterfaceComponent implements OnInit {
 
   elclick(item) {
     this.activeOperation = item['additional'];
-
+    this.activeItem = item['item'];
+  
     if(this.activeOperation == 'Update') {
       $('#exampleModal').modal('show');
     }
@@ -69,5 +72,15 @@ export class CrudInterfaceComponent implements OnInit {
 
   onOperationClick(operation) {
     this.activeOperation = operation;
+  }
+
+  onOkClick() {
+    if(this.activeOperation === 'Update') {
+      const send = new CrudInterfaceObject(this.objectToSend, this.activeItem, null);
+      this.onCreateClickEvent.emit(send);
+    } else if (this.activeOperation === 'Create') {
+      const send = new CrudInterfaceObject(this.objectToSend, this.activeItem, null);
+      this.onUpdateClickEvent.emit(send);
+    }
   }
 }

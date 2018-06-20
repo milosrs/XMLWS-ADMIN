@@ -6,6 +6,7 @@ import { Attribute } from '../../model/attribute';
 import { AccomodationCategoryService } from '../../services/accomodation-category.service';
 import { AccomodationTypeService } from '../../services/accomodation-type.service';
 import { BonusFeaturesService } from '../../services/bonus-features.service';
+import { CrudInterfaceObject } from '../../shared/model/crudInterfaceObject';
 
 @Component({
   selector: 'app-attributepanel',
@@ -66,5 +67,44 @@ export class AttributepanelComponent implements OnInit {
     this.attributeType = undefined;
     this.shouldShowPanel = false;
     this.attributesList = [];
+  }
+
+  create(item: CrudInterfaceObject) {
+    if(this.attributeType === 'Category') {
+      const category = new AccomodationCategory(item.realObject['id'], item.realObject['name']);
+      this.categoryService.insert(category);
+    } else if(this.attributeType === 'Type') {
+      const type = new AccomodationType(item.realObject['id'], item.realObject['name']);
+      this.typeService.insert(type);
+    } else if(this.attributeType === 'Bonus') {
+      const bonus = new BonusFeatures(item.realObject['id'], item.realObject['name']);
+      this.bonusService.insert(bonus);
+    }
+  }
+
+  update(item: CrudInterfaceObject) {
+    if(this.attributeType === 'Category') {
+      const category = new AccomodationCategory(item.realObject['id'], item.realObject['name']);
+      this.categoryService.update(category);
+    } else if(this.attributeType === 'Type') {
+      const type = new AccomodationType(item.realObject['id'], item.realObject['name']);
+      this.typeService.update(type);
+    } else if(this.attributeType === 'Bonus') {
+      const bonus = new BonusFeatures(item.realObject['id'], item.realObject['name']);
+      this.bonusService.update(bonus);
+    }
+  }
+
+  delete(item: CrudInterfaceObject) {
+    if(this.attributeType === 'Category') {
+      const category = new AccomodationCategory(item.realObject['id'], item.realObject['name']);
+      this.categoryService.update(category.id);
+    } else if(this.attributeType === 'Type') {
+      const type = new AccomodationType(item.realObject['id'], item.realObject['name']);
+      this.typeService.update(type.id);
+    } else if(this.attributeType === 'Bonus') {
+      const bonus = new BonusFeatures(item.realObject['id'], item.realObject['name']);
+      this.bonusService.update(bonus.id);
+    }
   }
 }
