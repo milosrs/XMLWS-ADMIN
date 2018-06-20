@@ -77,10 +77,10 @@ export class CrudInterfaceComponent implements OnInit {
   onOkClick() {
     if(this.activeOperation === 'Update') {
       const send = new CrudInterfaceObject(this.objectToSend, this.activeItem, null);
-      this.onCreateClickEvent.emit(send);
+      this.onUpdateClickEvent.emit(send);
     } else if (this.activeOperation === 'Create') {
       const send = new CrudInterfaceObject(this.objectToSend, this.activeItem, null);
-      this.onUpdateClickEvent.emit(send);
+      this.onCreateClickEvent.emit(send);
     }
   }
 }

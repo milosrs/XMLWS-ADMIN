@@ -71,40 +71,67 @@ export class AttributepanelComponent implements OnInit {
 
   create(item: CrudInterfaceObject) {
     if(this.attributeType === 'Category') {
-      const category = new AccomodationCategory(item.realObject['id'], item.realObject['name']);
-      this.categoryService.insert(category);
+      const category = new AccomodationCategory(null, item.objToSend['name']);
+      this.categoryService.insert(category)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     } else if(this.attributeType === 'Type') {
-      const type = new AccomodationType(item.realObject['id'], item.realObject['name']);
-      this.typeService.insert(type);
+      const type = new AccomodationType(null, item.objToSend['name']);
+      this.typeService.insert(type)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     } else if(this.attributeType === 'Bonus') {
-      const bonus = new BonusFeatures(item.realObject['id'], item.realObject['name']);
-      this.bonusService.insert(bonus);
+      const bonus = new BonusFeatures(null, item.objToSend['name']);
+      this.bonusService.insert(bonus)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     }
   }
 
   update(item: CrudInterfaceObject) {
     if(this.attributeType === 'Category') {
-      const category = new AccomodationCategory(item.realObject['id'], item.realObject['name']);
-      this.categoryService.update(category);
+      const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name']);
+      this.categoryService.update(category)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     } else if(this.attributeType === 'Type') {
-      const type = new AccomodationType(item.realObject['id'], item.realObject['name']);
-      this.typeService.update(type);
+      const type = new AccomodationType(item.realObject['id'], item.objToSend['name']);
+      this.typeService.update(type)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     } else if(this.attributeType === 'Bonus') {
-      const bonus = new BonusFeatures(item.realObject['id'], item.realObject['name']);
-      this.bonusService.update(bonus);
+      const bonus = new BonusFeatures(item.realObject['id'], item.objToSend['name']);
+      this.bonusService.update(bonus)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     }
   }
 
   delete(item: CrudInterfaceObject) {
     if(this.attributeType === 'Category') {
-      const category = new AccomodationCategory(item.realObject['id'], item.realObject['name']);
-      this.categoryService.update(category.id);
+      const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name']);
+      this.categoryService.update(category.id)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     } else if(this.attributeType === 'Type') {
-      const type = new AccomodationType(item.realObject['id'], item.realObject['name']);
-      this.typeService.update(type.id);
+      const type = new AccomodationType(item.realObject['id'], item.objToSend['name']);
+      this.typeService.update(type.id)
+      .subscribe(resp => {
+        console.log(resp)
+      });
     } else if(this.attributeType === 'Bonus') {
-      const bonus = new BonusFeatures(item.realObject['id'], item.realObject['name']);
-      this.bonusService.update(bonus.id);
+      const bonus = new BonusFeatures(item.realObject['id'], item.objToSend['name']);
+      this.bonusService.update(bonus.id)
+        .subscribe(resp => {
+          console.log(resp)
+        });
     }
   }
 }

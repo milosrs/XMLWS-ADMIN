@@ -41,7 +41,7 @@ export abstract class AbstractService<Entity, Key> {
   }
 
   update(toUpdate: any): Observable<any> {
-    return this.http.put(this.actionUrl + '/update/', toUpdate, {headers: this.authService.getJSONAuthHeader()});
+    return this.http.put(this.actionUrl + '/update', toUpdate, {headers: this.authService.getJSONAuthHeader()});
   }
 
 }
