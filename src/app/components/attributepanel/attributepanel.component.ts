@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, QueryList } from '@angular/core';
 import { AccomodationCategory } from '../../model/accomodation-category';
 import { AccomodationType } from '../../model/accomodation-type';
 import { BonusFeatures } from '../../model/bonus-features';
@@ -7,6 +7,7 @@ import { AccomodationCategoryService } from '../../services/accomodation-categor
 import { AccomodationTypeService } from '../../services/accomodation-type.service';
 import { BonusFeaturesService } from '../../services/bonus-features.service';
 import { CrudInterfaceObject } from '../../shared/model/crudInterfaceObject';
+import { CrudInterfaceComponent } from '../../../../public_api';
 
 @Component({
   selector: 'app-attributepanel',
@@ -18,6 +19,7 @@ export class AttributepanelComponent implements OnInit {
   private attributesList: Attribute[];
   private attributeType: string;
   private shouldShowPanel: boolean;
+  @ViewChild(CrudInterfaceComponent) private crudInterface: CrudInterfaceComponent;
 
   constructor(protected categoryService: AccomodationCategoryService,
               protected typeService: AccomodationTypeService,
@@ -74,19 +76,19 @@ export class AttributepanelComponent implements OnInit {
       const category = new AccomodationCategory(null, item.objToSend['name']);
       this.categoryService.insert(category)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.addToArray(resp['responseBody']);
       });
     } else if(this.attributeType === 'Type') {
       const type = new AccomodationType(null, item.objToSend['name']);
       this.typeService.insert(type)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.addToArray(resp['responseBody']);
       });
     } else if(this.attributeType === 'Bonus') {
       const bonus = new BonusFeatures(null, item.objToSend['name']);
       this.bonusService.insert(bonus)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.addToArray(resp['responseBody']);
       });
     }
   }
@@ -96,19 +98,19 @@ export class AttributepanelComponent implements OnInit {
       const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name']);
       this.categoryService.update(category)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.updateFromArray(resp['responseBody'], 'id');
       });
     } else if(this.attributeType === 'Type') {
       const type = new AccomodationType(item.realObject['id'], item.objToSend['name']);
       this.typeService.update(type)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.updateFromArray(resp['responseBody'], 'id');
       });
     } else if(this.attributeType === 'Bonus') {
       const bonus = new BonusFeatures(item.realObject['id'], item.objToSend['name']);
       this.bonusService.update(bonus)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.updateFromArray(resp['responseBody'], 'id');
       });
     }
   }
@@ -116,21 +118,21 @@ export class AttributepanelComponent implements OnInit {
   delete(item: CrudInterfaceObject) {
     if(this.attributeType === 'Category') {
       const category = new AccomodationCategory(item.realObject['id'], item.objToSend['name']);
-      this.categoryService.update(category.id)
+      this.categoryService.delete(category.id)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.deleteFromArray('id', item.realObject['id']);
       });
     } else if(this.attributeType === 'Type') {
       const type = new AccomodationType(item.realObject['id'], item.objToSend['name']);
-      this.typeService.update(type.id)
+      this.typeService.delete(type.id)
       .subscribe(resp => {
-        console.log(resp)
+        this.crudInterface.deleteFromArray('id', item.realObject['id']);
       });
     } else if(this.attributeType === 'Bonus') {
       const bonus = new BonusFeatures(item.realObject['id'], item.objToSend['name']);
-      this.bonusService.update(bonus.id)
+      this.bonusService.delete(bonus.id)
         .subscribe(resp => {
-          console.log(resp)
+          this.crudInterface.deleteFromArray('id', item.realObject['id']);
         });
     }
   }

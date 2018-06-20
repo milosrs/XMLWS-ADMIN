@@ -35,9 +35,15 @@ export class CrudInterfaceComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.listitems = HelperFunctions.createListItems(this.items, null, ['name']);
-    this.typesList = HelperFunctions.getObjectTypesList(this.items[0]);
-    this.keyList = Object.keys(this.items[0]);
+    debugger;
+    if(!HelperFunctions.containsEmptyValues(this.items) && !HelperFunctions.isEmptyValue(this.items)) {
+      this.listitems = HelperFunctions.createListItems(this.items, null, ['name']);
+      this.typesList = HelperFunctions.getObjectTypesList(this.items[0]);
+      this.keyList = Object.keys(this.items[0]);
+    } else {
+      this.items = [];
+      this.keyList = this.keysToEdit;
+    }
 
     for(let i = 0; i < this.keyList.length; i++) {
       if(this.keysToEdit.indexOf(this.keyList[i]) > -1) {
@@ -46,9 +52,6 @@ export class CrudInterfaceComponent implements OnInit {
         this.keyList.splice(i, 1);
       }
     }
-
-    console.log(this.typesList);
-    console.log(this.objectToSend);
   }
 
   elclick(item) {
@@ -57,6 +60,8 @@ export class CrudInterfaceComponent implements OnInit {
   
     if(this.activeOperation == 'Update') {
       $('#exampleModal').modal('show');
+    } else if(this.activeOperation == 'Delete') {
+      this.onDeleteClickEvent.emit(new CrudInterfaceObject(this.objectToSend, this.activeItem, null));
     }
   }
 
@@ -67,7 +72,11 @@ export class CrudInterfaceComponent implements OnInit {
   }
 
   getObjectKeyType(key: string) {
-    return typeof this.items[0][key];
+    if(!HelperFunctions.isEmptyValue(this.items)){
+      return typeof this.items[0][key];
+    } else {
+      return 'string';
+    }
   }
 
   onOperationClick(operation) {
@@ -82,5 +91,38 @@ export class CrudInterfaceComponent implements OnInit {
       const send = new CrudInterfaceObject(this.objectToSend, this.activeItem, null);
       this.onCreateClickEvent.emit(send);
     }
+  }
+
+  addToArray(item) {
+    this.items.push(item);
+    this.updateListItems();
+  }
+
+  updateFromArray(item, keyName) {
+    for(let i=0; i<this.items.length; i++) {
+      if(this.items[i][keyName] === item[keyName]) {
+        this.items[i] = item;
+        break;
+      }
+    }
+    this.updateListItems();
+  }
+
+  deleteFromArray(keyName, key) {
+    let index;
+  
+    for(let i=0; i<this.items.length; i++) {
+      if(this.items[i][keyName] === key) {
+        index = i;
+        break;
+      }
+    }
+
+    this.items.splice(index, 1);
+    this.updateListItems();
+  }
+
+  updateListItems() {
+    this.listitems = HelperFunctions.createListItems(this.items, null, ['name']);
   }
 }
