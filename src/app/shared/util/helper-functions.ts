@@ -136,4 +136,16 @@ export class HelperFunctions {
   public static deleteItemFromArray(arrayOfItems, item) {
     return arrayOfItems = arrayOfItems.splice(arrayOfItems.indexOf(item), 1);
   }
+
+  public static getObjectTypesList(object: any) {
+    const keys = Object.keys(object);
+    const typesList = [];
+
+    for(let i = 0; i < keys.length; i++) {
+      const type = typeof object[keys[i]];
+      typesList.push(type);
+    }
+
+    return typesList;
+  }
 }

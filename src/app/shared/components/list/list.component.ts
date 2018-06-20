@@ -13,15 +13,19 @@ export class ListComponent implements OnInit {
 
   private listType = Constants.ListType;
   private requestType = Constants.RequestType;
-  @Output() onElementClickEvent: EventEmitter<any> = new EventEmitter();
+  
   @Input() public header: string;
   @Input() public items: any;
   @Input() public type: string;
   @Input() public selectedRequestType: string;
   @Input() public dynamicStyle: string;
+  @Input() public additionalPassParam: string;
+
+  @Output() onElementClickEvent: EventEmitter<any> = new EventEmitter();
   @Output() acceptClickEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() declineClickEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() addRemoveClickEvent: EventEmitter<any> = new EventEmitter<any>();
+  
   @ViewChildren(RequestComponent) reqComps: QueryList<RequestComponent>;
 
   constructor() { }
@@ -30,9 +34,17 @@ export class ListComponent implements OnInit {
 
   elementClicked(item: ListItem) {
     if(!HelperFunctions.containsEmptyValues(item.relatedItem)){
-      this.onElementClickEvent.emit(item.relatedItem);
+      if(!HelperFunctions.containsEmptyValues(this.additionalPassParam)){
+        this.onElementClickEvent.emit({item: item.relatedItem, additional: this.additionalPassParam});
+      } else {
+        this.onElementClickEvent.emit(item.relatedItem);
+      }
     } else {
-      this.onElementClickEvent.emit(item);
+      if(!HelperFunctions.containsEmptyValues(this.additionalPassParam)){
+        this.onElementClickEvent.emit({item: item, additional: this.additionalPassParam});
+      } else {
+        this.onElementClickEvent.emit(item);
+      }
     }
   }
 

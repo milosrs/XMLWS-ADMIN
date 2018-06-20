@@ -1,5 +1,5 @@
 <div>
-  <div class="ListHeader">
+  <div class="ListHeader" *ngIf="header != null || header != undefined">
     {{header}}
   </div>
 
@@ -8,11 +8,11 @@
       <li class="list-group-item ListItem" *ngFor="let item of items; let i = index" (click)="elementClicked(item)"
           id={{i}}>
             <div class="row">
-              <div class="col-sm-3 Image" *ngIf="item.imagePath != null && item.imagePath !== undefined">
+              <div class="col-sm-6 Image" *ngIf="item.imagePath != null && item.imagePath !== undefined">
                   <img *ngIf="item.imagePath != null && item.imagePath !== undefined" class="Image"
                     src="{{item.imagePath}}"/>
               </div>
-              <div class="col-sm-3 Text">
+              <div class="Text" [ngClass]="{'col-12' : item.imagePath == null || item.imagePath == undefined}">
                   {{item.text}}
               </div>
             </div>

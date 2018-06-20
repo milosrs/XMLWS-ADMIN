@@ -64,5 +64,7 @@ export class AttributepanelComponent implements OnInit {
 
   backToSelection() {
     this.attributeType = undefined;
+    this.shouldShowPanel = false;
+    this.attributesList = [];
   }
 }

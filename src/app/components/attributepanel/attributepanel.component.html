@@ -20,8 +20,11 @@
       </div>
       <div class="row Interface">
           <CRUD
-            [header]="'Accomodation Category Work Panel'"
-            [CRUD]="'CUD'"></CRUD>
+            [header]="'Accomodation Category'"
+            [CRUD]="'CUD'"
+            [items]="attributesList"
+            [displayNames]="['name']"
+            [keysToEdit]="['name']"></CRUD>
       </div>
     </div>
 
@@ -31,8 +34,11 @@
           </div>
           <div class="row Interface">
               <CRUD
-              [header]="'Accomodation Type Work Panel'"
-              [CRUD]="'CUD'"></CRUD>
+              [header]="'Accomodation Type'"
+              [CRUD]="'CUD'"
+              [items]="attributesList"
+              [displayNames]="['name']"
+              [keysToEdit]="['name']"></CRUD>
           </div>  
     </div>
 
@@ -42,8 +48,12 @@
           </div>
           <div class="row Interface">
               <CRUD
-                [header]="'Bonus Features Work Panel'"
-                [CRUD]="'CUD'"></CRUD>
+                [header]="'Bonus Features'"
+                [CRUD]="'CUD'"
+                [items]="attributesList"
+                [displayNames]="['name']"
+                [keysToEdit]="['name']"
+                (onCreateClickEvent)="create($event)"></CRUD>
           </div>    
     </div>
   </div>

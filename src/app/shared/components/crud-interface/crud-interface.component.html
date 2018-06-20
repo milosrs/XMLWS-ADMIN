@@ -11,6 +11,7 @@
           [header]="'Read'"
           [items]='this.listitems'
           [selectedRequestType]='requestType'
+          [additionalPassParam]="'Read'"
           (onElementClickEvent)='elclick($event)'
           [dynamicStyle]= "getListStyle()"> </app-list>
       </div>
@@ -21,17 +22,19 @@
         <div class="row">
           <div class="col-sm-9">
             <app-list
-              [header]="Remove"
+              [header]="null"
               [items]='this.listitems'
               [selectedRequestType]='requestType'
-              (onElementClickEvent)='elclick($event)'
+              [additionalPassParam]="'Create'"
+              (onElementClickEvent)="elclick($event)"
               [dynamicStyle]= "getListStyle()"> </app-list>
           </div>
           <div class="col-sm-3">
             <div class="row TinyInterfaceButtonGroup">
               <div class="col-sm-8">Add {{entityName}}</div>
               <div class="col-sm-4">
-                <button type="button" class="btn-success" data-toggle="modal" data-target="#exampleModal">+</button>
+                <button type="button" class="btn-success" data-toggle="modal" 
+                        data-target="#exampleModal" (click)="onOperationClick('Create')">+</button>
               </div>
             </div>
           </div>
@@ -44,10 +47,11 @@
         <div class="row">
           <div class="col-sm-12">
             <app-list
-              [header]="Remove"
+              [header]="null"
               [items]='this.listitems'
               [selectedRequestType]='requestType'
-              (onElementClickEvent)='elclick($event)'
+              [additionalPassParam]="'Update'"
+              (onElementClickEvent)="elclick($event)"
               [dynamicStyle]= "getListStyle()"> </app-list>
           </div>
         </div>
@@ -57,6 +61,7 @@
             [header]="'Delete'"
             [items]='this.listitems'
             [selectedRequestType]='requestType'
+            [additionalPassParam]="'Delete'"
             (onElementClickEvent)='elclick($event)'
             [dynamicStyle]= "getListStyle()"> </app-list>
       </div>
@@ -68,17 +73,27 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">{{activeOperation}} Item</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <form class="form-horizontal">
+
+              <div class="form-group row" *ngFor="let key of keyList">
+                <label for="key" class="col-sm-5 col-form-label">{{key}}</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="key" name="key" 
+                          [(ngModel)]="objectToSend[key]" *ngIf="getObjectKeyType(key) === 'string'"/>
+                </div>
+              </div>
+
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" (click)="onOkClick($event)">{{activeOperation}}</button>
           </div>
         </div>
       </div>
