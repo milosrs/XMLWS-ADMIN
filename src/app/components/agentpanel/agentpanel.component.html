@@ -1,3 +1,103 @@
-<p>
-  agentpanel works!
-</p>
+<div class="container-fluid"> 
+  <div class="row Header">
+    <h1>Agent control panel</h1>
+  </div>
+
+  <div class="row">
+    
+    <div class="col-sm-4">
+      <app-list
+        [header]="'Activation requests'"
+        [items]="convertToListItem(agentList)"
+        (onElementClickEvent)="onAgentClick($event)"></app-list>
+    </div>
+
+    <div class="col-sm-8 ScrollableForm">
+      <form class="form-horizontal" #agentForm="ngForm">
+
+        <div class="form-group row">
+          <label for="uname" class="col-sm-3 col-form-label"> Username: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="uname" name="uname" [(ngModel)]="activeAgent.username" disabled>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="mail" class="col-sm-3 col-form-label"> E-mail: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="mail" name="mail" [(ngModel)]="activeAgent.email" disabled>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="name" class="col-sm-3 col-form-label"> Name: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="name" name="name" [(ngModel)]="activeAgent.name" disabled>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="surname" class="col-sm-3 col-form-label"> Surname: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="surname" name="surname" [(ngModel)]="activeAgent.surname" disabled>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="city" class="col-sm-3 col-form-label"> City: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="city" name="city" [(ngModel)]="activeAgent.city" disabled>
+          </div>
+        </div>          
+
+
+        <div class="form-group row">
+          <label for="city" class="col-sm-3 col-form-label"> City: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="city" name="city" [(ngModel)]="activeAgent.city" disabled>
+          </div>
+        </div>          
+
+        <div class="form-group row">
+          <label for="address" class="col-sm-3 col-form-label"> Home Address: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="address" name="address" [(ngModel)]="activeAgent.homeAddress" disabled>
+          </div>
+        </div>          
+
+    
+        <div class="form-group row">
+          <label for="phoneNumber" class="col-sm-3 col-form-label"> Phone no: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="activeAgent.phoneNumber" disabled>
+          </div>
+        </div>          
+
+        <div class="form-group row">
+          <label for="pmb" class="col-sm-3 col-form-label"> PMB: </label>
+          <div class="col-sm-6">
+            <input class="form-control" id="pmb" placeholder="13 characters"
+                    name="pmb" [(ngModel)]="agentToSend.pmb" required #pmb="ngModel" minlength="13" maxlength="13">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-3">
+              <button type="button" class="btn btn-success" (click)="approve()" [disabled]="!agentForm.form.valid">Approve</button>
+            </div>
+
+            <div class="col-sm-1">
+              &nbsp;
+            </div>
+
+            <div class="col-sm-3">
+              <button type="button" class="btn btn-danger" (click)="decline()">Decline</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
