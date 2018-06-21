@@ -1,0 +1,26 @@
+.CommentSection{
+    margin-left: -5%;
+    width: 69%;
+}
+
+.Comment {
+    border-style: ridge;
+    border-color: gray;
+}
+
+.MiniInfo {
+    font-size: 0.8em;
+    margin-left: 0.6%;
+}
+
+.Text {
+    text-align: justify;
+    text-justify: inter-word;
+    margin-left: 1%;
+    border-bottom: ridge;
+}
+
+.Buttons{
+    margin-left: 50%;
+    margin-top: 0.5%;
+}

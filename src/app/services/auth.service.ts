@@ -27,14 +27,15 @@ export class AuthService {
   }
 
   init() {
+    debugger;
     const item = window.localStorage.getItem('currentUser');
 
     if (!HelperFunctions.isEmptyValue(item)) {
-      if (!HelperFunctions.containsEmptyValues(item) && JSON.stringify(item) === JSON.stringify(this.emptyToken)) {
+      if (JSON.stringify(this.emptyToken) !== item) {
         const ls = JSON.parse(window.localStorage.getItem('currentUser'));
         this.loggedUserToken = new Token(ls['username'], ls['token']);
       }
-      if(HelperFunctions.containsEmptyValues(this.loggedUserToken)) {
+      if(!HelperFunctions.containsEmptyValues(this.loggedUserToken)) {
         const ls = JSON.parse(window.localStorage.getItem('currentUser'));
         this.loggedUserToken = new Token(ls['username'], ls['token']);
       }

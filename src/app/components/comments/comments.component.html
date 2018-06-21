@@ -1,3 +1,39 @@
-<p>
-  comments works!
-</p>
+<div class="container-fluid CommandArea"> 
+  <div class="row Header">
+    <h1>Comments Control Panel</h1>
+  </div>
+
+  <div class="CommentSection">
+    <div class="row Comment" *ngFor="let comment of commentList">
+
+      <div class="row MiniInfo">
+        <div class="col-4 MiniInfo">
+          From: {{comment.username}}
+        </div>
+        <div class="col-4 MiniInfo">
+          Date: {{comment.date}}
+        </div>
+        <div class="col-4 MiniInfo">
+          Reservation: {{comment.reservationName}}
+        </div>
+      </div>
+
+      <div class="row Text">
+        <div class="col-11">
+            {{comment.text}}
+        </div>
+      </div>
+
+      <div class="row Buttons">
+        <div class="col-6">
+          <button class="btn btn-danger" (click)="decline(comment)">Decline</button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-success" (click)="approve(comment)">Approve</button>
+        </div>
+      </div>
+
+    </div>
+    <br/>
+  </div>
+</div>

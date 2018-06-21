@@ -18,6 +18,7 @@ import { UserManipulatorService } from './services/user-manipulator.service';
 import { AccomodationCategoryService } from './services/accomodation-category.service';
 import { AccomodationTypeService } from './services/accomodation-type.service';
 import { BonusFeaturesService } from './services/bonus-features.service';
+import { CommentService } from './services/comment.service';
 
 import { ListComponent } from './shared/components/list/list.component';
 import { RequestComponent } from './shared/components/request/request.component';
@@ -58,7 +59,8 @@ import { CommentsComponent } from './components/comments/comments.component';
      LoggedInGuard,
      AccomodationCategoryService,
      AccomodationTypeService,
-     BonusFeaturesService
+     BonusFeaturesService,
+     CommentService
   ],
   bootstrap: [AppComponent]
 })
