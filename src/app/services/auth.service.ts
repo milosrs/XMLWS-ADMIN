@@ -63,7 +63,8 @@ export class AuthService {
     const tokenStr = this.loggedUserToken === null ? '' : this.loggedUserToken.token;
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + tokenStr
+      'Authorization': 'Bearer ' + tokenStr,
+      'token' : tokenStr
     });
   }
   getFORMHeader(): HttpHeaders {
