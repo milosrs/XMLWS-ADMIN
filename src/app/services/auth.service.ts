@@ -27,15 +27,10 @@ export class AuthService {
   }
 
   init() {
-    debugger;
     const item = window.localStorage.getItem('currentUser');
 
-    if (!HelperFunctions.isEmptyValue(item)) {
+    if (!HelperFunctions.isEmptyValue(item) && item !== 'null') {
       if (JSON.stringify(this.emptyToken) !== item) {
-        const ls = JSON.parse(window.localStorage.getItem('currentUser'));
-        this.loggedUserToken = new Token(ls['username'], ls['token']);
-      }
-      if(!HelperFunctions.containsEmptyValues(this.loggedUserToken)) {
         const ls = JSON.parse(window.localStorage.getItem('currentUser'));
         this.loggedUserToken = new Token(ls['username'], ls['token']);
       }
@@ -53,7 +48,6 @@ export class AuthService {
         this.loggedUserToken =  new Token(resp['username'], resp['token']);
         this.storeToken();
         this.logger.next(true);
-        console.log('Token:', this.loggedUserToken);
         this.router.navigateByUrl(returnUrl);
       });
   }
@@ -61,7 +55,7 @@ export class AuthService {
   logout() {
     window.localStorage.clear();
     this.loggedUserToken = null;
-    this.router.navigate(['/home']);
+    this.router.navigate(['login']);
     this.logger.next(false);
   }
 
@@ -113,12 +107,9 @@ export class AuthService {
 
   isLoggedInSimple(): boolean {
     const ls = JSON.parse(window.localStorage.getItem('currentUser'));
-    const loggedIn = !HelperFunctions.containsEmptyValues(this.getToken()) || 
-                     !HelperFunctions.isEmptyValue(ls) &&
-                     this.emptyToken !== this.loggedUserToken &&
-                     JSON.stringify(this.emptyToken) !== window.localStorage.getItem('currentUser') &&
-                     JSON.stringify(ls) != JSON.stringify(this.emptyToken);
-    
+    const loggedIn = JSON.stringify(ls) != JSON.stringify(this.emptyToken)
+                     && ls !== 'null' && ls !== null && ls !== JSON.stringify(ls);
+
     if(loggedIn) {
       this.storeToken();
     }

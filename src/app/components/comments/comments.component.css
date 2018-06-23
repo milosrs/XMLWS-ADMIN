@@ -6,6 +6,8 @@
 .Comment {
     border-style: ridge;
     border-color: gray;
+    min-width: 52vw;
+    margin-bottom: 3%;
 }
 
 .MiniInfo {
@@ -17,10 +19,16 @@
     text-align: justify;
     text-justify: inter-word;
     margin-left: 1%;
+    margin-right: 1%;
     border-bottom: ridge;
 }
 
 .Buttons{
     margin-left: 50%;
     margin-top: 0.5%;
+    font-size: 11px;
+}
+
+.Button {
+    font-size: 11px;
 }

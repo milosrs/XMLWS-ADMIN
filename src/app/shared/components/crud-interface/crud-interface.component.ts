@@ -35,7 +35,6 @@ export class CrudInterfaceComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    debugger;
     if(!HelperFunctions.containsEmptyValues(this.items) && !HelperFunctions.isEmptyValue(this.items)) {
       this.listitems = HelperFunctions.createListItems(this.items, null, ['name']);
       this.typesList = HelperFunctions.getObjectTypesList(this.items[0]);

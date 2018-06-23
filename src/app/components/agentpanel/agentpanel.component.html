@@ -1,4 +1,4 @@
-<div class="container-fluid"> 
+<div class="container-fluid" *ngIf="agentList !== null && agentList !== undefined && agentList.length > 0"> 
   <div class="row Header">
     <h1>Agent control panel</h1>
   </div>
@@ -99,5 +99,11 @@
       </form>
     </div>
 
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="agentList === null || agentList === undefined || agentList.length === 0"> 
+  <div class="row">
+    <h1>There is literally nothing to do here :(</h1>
   </div>
 </div>

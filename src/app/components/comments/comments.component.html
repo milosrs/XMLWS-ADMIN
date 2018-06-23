@@ -4,32 +4,27 @@
   </div>
 
   <div class="CommentSection">
-    <div class="row Comment" *ngFor="let comment of commentList">
+    <div class="container-fluid Comment" *ngFor="let comment of commentList">
 
       <div class="row MiniInfo">
-        <div class="col-4 MiniInfo">
+        <div class="col-5 MiniInfo">
           From: {{comment.username}}
         </div>
-        <div class="col-4 MiniInfo">
-          Date: {{comment.date}}
-        </div>
-        <div class="col-4 MiniInfo">
+        <div class="col-6 MiniInfo">
           Reservation: {{comment.reservationName}}
         </div>
       </div>
 
       <div class="row Text">
-        <div class="col-11">
-            {{comment.text}}
-        </div>
+        {{comment.text}}
       </div>
 
       <div class="row Buttons">
         <div class="col-6">
-          <button class="btn btn-danger" (click)="decline(comment)">Decline</button>
+          <button class="btn btn-danger Button" (click)="decline(comment)">Decline</button>
         </div>
-        <div class="col-6">
-          <button class="btn btn-success" (click)="approve(comment)">Approve</button>
+        <div class="col-6 Button">
+          <button class="btn btn-success Button" (click)="approve(comment)">Approve</button>
         </div>
       </div>
 
